@@ -24,4 +24,17 @@ You can reduce the workspace size to about `-w 2000` if you want to fit on small
 
 The evaluation is performed on extinct species. `data/corpus.{en,zh}` and `data/valid.{en,zh}` are prepared manually. For training data I used [中国生物物种名录 ](http://sp2000.org.cn/info/info_how_to_cite): The Biodiversity Committee of Chinese Academy of Sciences, 2020, Catalogue of Life China: 2020 Annual Checklist, Beijing, China.
 
+```sql
+SELECT canonical_name as name,
+	CASE
+		WHEN species_c <> '' THEN species_c 
+		WHEN genus_c = '' THEN NULL
+		WHEN substr(genus_c, -1) = '属' THEN substr(genus_c, 1, length(genus_c) - 1)
+		ELSE genus_c
+	END as name_c
+FROM scientific_names sn JOIN families f 
+ON sn.family_id = f.record_id
+WHERE f.class = 'Mammalia'
+```
+
 See the transformer example (`marian/examples/transformer/`) for more details.
