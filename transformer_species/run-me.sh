@@ -50,7 +50,7 @@ fi
 # create common vocabulary
 if [ ! -e "model/vocab.enzh.yml" ]
 then
-    cat data/corpus.bpe.en data/corpus.bpe.zh | $MARIAN_VOCAB --max-size 36000 > mozhl/vocab.enzh.yml
+    cat data/corpus.bpe.en data/corpus.bpe.zh | $MARIAN_VOCAB --max-size 36000 > model/vocab.enzh.yml
 fi
 
 # train model
