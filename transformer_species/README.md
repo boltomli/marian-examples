@@ -38,7 +38,7 @@ SELECT canonical_name,
 	END AS name_c
 FROM scientific_names sn JOIN families f 
 ON sn.family_id = f.record_id
-WHERE f.class = 'Mammalia'
+WHERE f.class in ('Mammalia', 'Reptilia', 'Aves', 'Amphibia')
 ```
 
 * [Species 2000 & ITIS Catalogue of Life](https://www.sp2000.org/index.php?option=com_content&task=view&id=17&Itemid=33): Roskov Y., Ower G., Orrell T., Nicolson D., Bailly N., Kirk P.M., Bourgoin T., DeWalt R.E., Decock W., Nieukerken E. van, Zarucchi J., Penev L., eds. (2019). Species 2000 & ITIS Catalogue of Life, 2019 Annual Checklist. Digital resource at www.catalogueoflife.org/annual-checklist/2019. Species 2000: Naturalis, Leiden, the Netherlands. ISSN 2405-884X.
